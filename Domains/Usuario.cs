@@ -1,4 +1,4 @@
-﻿namespace ClubeDoLivro
+﻿namespace ClubeDoLivro.Domains
 {
     public class Usuario
     {
