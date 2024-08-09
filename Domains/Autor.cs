@@ -1,4 +1,5 @@
-﻿namespace ClubeDoLivro.Domains
+﻿
+namespace ClubeDoLivro.Domains
 {
     public class Autor
     {
@@ -6,5 +7,17 @@
         public string Nome { get; set; }
         public string Sobrenome { get; set; }
         public List<Livro> Livros { get; set; }
+        public int LivrosEscritos => Livros.Count;
+
+        public Autor()
+        {
+            Livros = new List<Livro>();
+        }
+
+        public void AdicionarLivro(Livro livro)
+        {
+            Livros.Add(livro);
+            livro.Autores.Add(this);
+        }
     }
 }
