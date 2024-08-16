@@ -16,8 +16,17 @@ namespace ClubeDoLivro.Domains
 
         public void AdicionarLivro(Livro livro)
         {
-            Livros.Add(livro);
-            livro.Autores.Add(this);
+            if (!Livros.Any(l => l.Id == livro.Id) && livro.EhValido())
+            {
+                Livros.Add(livro);
+                livro.AdicionarAutor(this);
+            }
+        }
+
+        public bool EhValido()
+        {
+            return !string.IsNullOrWhiteSpace(Nome)
+                && !string.IsNullOrWhiteSpace(Sobrenome);                
         }
     }
 }
